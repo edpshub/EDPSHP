@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDPS - Temp</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/2ndindexstyle.css">
+    <link rel="stylesheet" href="style/2ndindexmain.css">
+    <link rel="stylesheet" href="style/2ndindexgamestyle.css">
+        <!-- ▼▼▼ カード1専用のCSSを追加 ▼▼▼ -->
+    <link rel="stylesheet" href="style/card1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/TerminalTextEffect.css">
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="bg-section visible" id="bg-section-1"></div>
+        <div class="bg-section" id="bg-section-2"></div>
+        <div class="bg-section" id="bg-section-3"></div>
+        <div class="bg-section" id="bg-section-4"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <button class="hamburger-btn" aria-label="メニューを開閉する">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="sidebar">
+            <div class="sidebar-header"><h3>Menu</h3></div>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">EDPSHUB</a></li>
+                <li><a href="#">ACCESS</a></li>
+            </ul>
+        </nav>
+
+        <section class="content-section header-section">
+            <h1>EDPS</h1>
+        </section>
+
+        <section class="content-section text-effect-section">
+            <div class='console-container'>
+                <span id='text'></span><div class='console-underscore' id='console'>&#95;</div>
+            </div>
+        </section>
+<!-- ▼▼▼ ここから ▼▼▼ -->
+ 
+<!-- ▲▲▲ここまで▲▲▲-->  
+    </div>
+    
+    <script src="script/2ndindexscript.js" defer></script>
+    <script src="script/2ndindexmain.js" defer></script>
+    <script src="script/2ndindexgame.js" defer></script>
+    <script src="script/TerminalTextEffect.js" defer></script>
+</body>
+</html>

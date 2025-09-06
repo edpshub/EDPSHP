@@ -1,0 +1,114 @@
+@property --card-rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+/* --- カルーセル全体のコンテナ --- */
+/* --- カルーセル全体のコンテナ --- */
+.carousel-container {
+  width: 100%;
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  
+  perspective: 1500px;
+  user-select: none;
+  overflow-x: hidden;
+}
+
+/* --- カードが並ぶカルーセル本体 --- */
+.card-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* --- カードの基本スタイル --- */
+.card {
+  background: transparent;
+  width: 33vw;
+  max-width: 340px;
+  aspect-ratio: 1 / 1.5;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(88 199 250 / 0%);
+  font-size: 2em;
+  font-family: 'Poppins', cursive;
+  cursor: pointer;
+  margin: 0 2vw;
+  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease, color 1s;
+  opacity: 0.4;
+  /* z-indexの基準点とする */
+  isolation: isolate;
+}
+
+/* --- カードの状態別スタイル --- */
+.card.active {
+  opacity: 1;
+  transform: scale(1) rotateY(0deg);
+  color: rgb(88 199 250 / 100%);
+}
+.card.left {
+  transform: scale(0.85) rotateY(45deg);
+}
+.card.right {
+  transform: scale(0.85) rotateY(-45deg);
+}
+
+
+/* ▼▼▼ ホバーエフェクトの修正 ▼▼▼ */
+/* ホバー時にテキストを表示 */
+.card:not(.active):hover {
+  color: rgb(88 199 250 / 100%);
+}
+/* ホバー時に光彩エフェクト(::after)のみを消す */
+.card:hover::after {
+  animation: none;
+  opacity: 0;
+}
+
+
+/* --- カードのネオン効果と背景 --- */
+
+/* 紺色の背景 (z-index: -1でコンテンツの真後ろ) */
+.card::before {
+  content: "";
+  position: absolute;
+  /* ▼▼▼ z-indexを変更 ▼▼▼ */
+  z-index: -1;
+  inset: 3px;
+  background: #0d111c;
+  border-radius: 6px;
+}
+
+/* ネオンボーダーと背後の光彩 (z-index: -2で一番後ろ) */
+.card::after {
+  content: "";
+  position: absolute;
+  /* ▼▼▼ z-indexを変更 ▼▼▼ */
+  z-index: -2;
+  inset: 0;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--card-rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  box-shadow: 0 0 10px 5px rgba(60, 103, 227, 0.5);
+  animation: spin 2.5s linear infinite;
+  transition: opacity 0.5s;
+}
+
+
+/* --- アニメーション定義 --- */
+@keyframes spin {
+  0% {
+    --card-rotate: 0deg;
+  }
+  100% {
+    --card-rotate: 360deg;
+  }
+}
+

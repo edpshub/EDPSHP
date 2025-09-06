@@ -1,0 +1,122 @@
+:root {
+    --neon-color-1: rgba(0, 255, 255, 0.8);
+    --neon-color-2: rgba(255, 0, 255, 0.8);
+    --neon-color-3: rgba(255, 255, 0, 0.8);
+    --neon-color-4: rgba(0, 255, 0, 0.8);
+    --neon-animation-duration: 6s;
+}
+
+.game-container {
+    margin: 5vh auto 5vh;
+    max-width: 520px;
+    width: 90%;
+    position: relative;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1);
+    animation: neon-border-animation var(--neon-animation-duration) linear infinite;
+    padding: 15px;
+    background: rgba(13, 17, 28, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+#snake-game {
+    background-color: #0d111c;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.game-info {
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    padding-top: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.game-controls {
+    display: none; /* デスクトップでは非表示 */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+}
+.game-controls div {
+    display: flex;
+}
+.game-controls button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--neon-color-1);
+    color: white;
+    font-size: 1.5rem;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.game-controls button:active {
+    background: var(--neon-color-1);
+}
+
+/* タッチデバイスで操作ボタンを表示 */
+@media (hover: none) and (pointer: coarse) {
+    .game-controls {
+        display: flex;
+    }
+}
+
+/* ゲームオーバー画面 */
+#game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 28, 0.95);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 15px;
+    z-index: 10;
+}
+#game-over-screen h2 {
+    font-family: 'Monoton', cursive;
+    font-size: 3rem;
+    color: var(--neon-color-2);
+    text-shadow: 0 0 10px var(--neon-color-2);
+    margin: 0;
+}
+#game-over-screen button {
+    background: transparent;
+    border: 2px solid var(--neon-color-1);
+    color: var(--neon-color-1);
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s;
+}
+#game-over-screen button:hover {
+    background: var(--neon-color-1);
+    color: black;
+    box-shadow: 0 0 15px var(--neon-color-1);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes neon-border-animation {
+    0%   { box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1); }
+    25%  { box-shadow: 0 0 15px var(--neon-color-2), inset 0 0 15px var(--neon-color-2); }
+    50%  { box-shadow: 0 0 15px var(--neon-color-3), inset 0 0 15px var(--neon-color-3); }
+    75%  { box-shadow: 0 0 15px var(--neon-color-4), inset 0 0 15px var(--neon-color-4); }
+    100% { box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1); }
+}
+
+

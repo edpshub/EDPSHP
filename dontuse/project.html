@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <title>電子計算組織研究会(EDPS)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="電子計算組織研究会">
+
+  <link rel="stylesheet" href="gallarey.css">
+  <link rel="script" href="gallarey.js">
+  <!-- GSAP Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <!-- ScrollTrigger Plugin -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="Menubar.css">
+  <style>
+      /* ハンバーガーメニューのスタイル */
+      #menu-toggle {
+          position: fixed;
+          top: 10px;
+          left: 10px;
+          z-index: 1000;
+          cursor: pointer;
+      }
+      #menu-toggle div {
+          width: 30px;
+          height: 5px;
+          background: #ffffff;
+          margin: 6px 0;
+          transition: 0.3s;
+          transform: translateY(10px);
+      }
+      #menu-toggle.open {
+          transform: translateX(200px)  ; /* 開いているときに右に移動 */
+      }
+      /* サイドバーの基本スタイル */
+      #nav-bar {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 250px;
+          height: 100%;
+          background: #333;
+          color: #fff;
+          transform: translateX(-100%);
+          transition: transform 0.3s ease;
+          z-index: 999;
+      }
+      #nav-bar.active {
+          transform: translateX(0);
+      }
+      .unko {
+          position: relative;
+      }
+  </style>
+</head>
+<header>
+<img src="img\EDPS-2024-11-27.png">
+</header>
+
+<body>
+<!--ここに入れろ-->
+
+
+<div class="loader-container">
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+
+.loader-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-reflect: below 0
+    linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.333));
+}
+
+.loader {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: animate 2s linear infinite;
+}
+
+.loader1:before,
+.loader2:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to top, transparent, rgba(0, 255, 249, 0.4));
+  background-size: 100px 180px;
+  background-repeat: no-repeat;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.loader2,
+.loader4 {
+  animation-delay: -1s;
+  filter: hue-rotate(290deg);
+}
+
+.loader i {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: #00fff9;
+  border-radius: 50%;
+  z-index: 100;
+  box-shadow: 0 0 10px #00fff9, 0 0 20px #00fff9, 0 0 30px #00fff9,
+    0 0 40px #00fff9, 0 0 50px #00fff9, 0 0 60px #00fff9, 0 0 70px #00fff9,
+    0 0 80px #00fff9, 0 0 90px #00fff9, 0 0 100px #00fff9;
+}
+
+.loader span {
+  position: absolute;
+  inset: 20px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Additional styles for loader-container2 */
+.loader-container2 .loader1:before,
+.loader-container2 .loader2:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to top, transparent, rgba(250, 169, 158, 0.5));
+  background-size: 100px 180px;
+  background-repeat: no-repeat;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+}
+
+.loader-container2 .loader2,
+.loader-container2 .loader4 {
+  animation-delay: -1s;
+  filter: hue-rotate(290deg);
+}
+
+.loader-container2 .loader i {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background: #ffa59e;
+  border-radius: 50%;
+  z-index: 100;
+  box-shadow: 0 0 10px #ffb0ab, 0 0 20px #ffb0ab, 0 0 30px #ffb0ab,
+    0 0 40px #ffb0ab, 0 0 50px #ffb0ab, 0 0 60px #ffb0ab, 0 0 70px #ffb0ab,
+    0 0 80px #ffb0ab, 0 0 90px #ffb0ab, 0 0 100px #ffb0ab;
+}
+.loader-container2 .loader span {
+  position: absolute;
+  inset: 20px;
+  background: #000;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+    </style>
+
+    <div class="loader loader1"><span></span></div>
+    <div class="loader loader2"><span></span></div>
+    <div class="loader loader3"><i></i></div>
+    <div class="loader loader4"><i></i></div>
+  </div>
+  <div class="loader-container loader-container2">
+    <div class="loader loader1"><span></span></div>
+    <div class="loader loader2"><span></span></div>
+    <div class="loader loader3"><i></i></div>
+    <div class="loader loader4"><i></i></div>
+  </div>
+
+
+
+<div id="menu-toggle">
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<!-- サイドバー -->
+<div class="unko">
+  <div id="nav-bar">
+      <div id="nav-header" class="clickable-div">
+          <a id="nav-title" href="2ndindex.html">E<i class="fab fa-codepen"></i>DPS</a>
+          <hr/>
+      </div>
+      <div id="nav-content">
+          <div class="nav-button clickable-div" id="gkbs">
+              <i class="fas fa-palette"></i><span>1.活動紹介</span>
+          </div>
+          <div class="nav-button clickable-div" id="nksk">
+              <i class="fas fa-images"></i><span>2.企画スケジュール</span>
+          </div>
+          <div class="nav-button clickable-div" id="acces">
+              <i class="fas fa-thumbtack"></i><span>3.アクセス</span>
+          </div>
+          <hr/>
+          <div class="nav-button clickable-div" id="project">
+              <i class="fas fa-heart"></i><span>4.プロジェクト紹介</span>
+          </div>
+          <div class="nav-button clickable-div" id="Timeline">
+              <i class="fas fa-heart"></i><span>5.タイムライン</span>
+          </div>
+          <div class="nav-button clickable-div" id="linenup">
+              <i class="fas fa-heart"></i><span>6.ラインナップ</span>
+          </div>
+          <div class="nav-button clickable-div" id="edpshub">
+              <i class="fas fa-heart"></i><span>7.EDPS HUB</span>
+          </div>
+          <hr/>
+          <div class="nav-button clickable-div" id="2ndindex">
+              <i class="fas fa-heart"></i><span>HOME</span>
+          </div>
+          <div id="nav-highlight"></div>
+      </div>
+      <input id="nav-footer-toggle" type="checkbox"/>
+      <div id="nav-footer">
+          <div id="nav-footer-heading">
+              <label for="nav-footer-toggle"><i class="fas fa-caret-up"></i></label>
+          </div>
+          <div id="nav-footer-content">  
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navBar = document.getElementById('nav-bar');
+
+  menuToggle.addEventListener('click', () => {
+      navBar.classList.toggle('active');
+      menuToggle.classList.toggle('open');
+  });
+  
+  document.querySelectorAll('.nav-button').forEach(button => {
+      button.addEventListener('click', () => {
+          const target = button.id;
+          if (target) {
+              window.location.href = target + '.html';
+          }
+      });
+  });
+</script>
+</body>
+
+<footer>
+    <!--ここに入れろ-->
+
+</footer>
+
+
+</html>

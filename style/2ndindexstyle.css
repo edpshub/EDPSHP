@@ -1,0 +1,292 @@
+/* Google FontsからMonotonをインポート */
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+
+/* ★★★★★ デザイン変数 ★★★★★ */
+:root {
+    --bg-color: #0c0c0f;
+    --sidebar-bg: rgba(18, 18, 22, 0.8);
+    --text-color: #e0e0e0;
+    --animation-speed: 5s;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    /* ▼▼▼ bodyの背景色を削除し、透明にする ▼▼▼ */
+    font-family: 'Poppins', sans-serif; 
+    color: var(--text-color);
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* --- 背景コンテナ --- */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background-color: var(--bg-color); /* ここに基本背景色を設定 */
+}
+
+/* --- 各背景セクションの共通スタイル --- */
+.bg-section {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.bg-section.visible {
+    opacity: 1;
+}
+
+/* 画像をうっすら表示させるためのオーバーレイ */
+.bg-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.664);
+}
+
+/* 境目をぼかすためのグラデーション */
+.bg-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    background: linear-gradient(to top, var(--bg-color) 20%, transparent);
+}
+
+/* --- 各背景の個別設定 --- */
+#bg-section-1 { background-color: #084ca7; }
+#bg-section-2 { background-image: url(https://pbs.twimg.com/media/GmaW65ia8AI8d3V?format=jpg&name=large);  }
+#bg-section-3 { background-image: url(https://pbs.twimg.com/media/GmaW65ia8AI8d3V?format=jpg&name=large); }
+#bg-section-4 { background-image: url(https://starwalk.space/gallery/images/mars-quiz-intro/1920x1080.jpg); }
+
+
+/* --- コンテンツ --- */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.content-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header-section { min-height: 5vh; }
+.text-effect-section { min-height: 5vh; }
+.carousel-section { min-height: 80vh; }
+.game-section { min-height: 60vh; }
+
+
+/* (h1, ハンバーガーボタン, サイドバー, 各種アニメーションのスタイルは変更なし) */
+
+/* ★★★★★ h1をヘッダーとして上部に配置 ★★★★★ */
+h1 {
+    /* オリジナルのフォントとアニメーションは維持 */
+    font-family: 'Monoton', cursive;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+    animation: text-flicker-in-glow 4s linear both;
+    
+    /* ▼▼▼ ヘッダーとしての上部配置とスタイルを追加 ▼▼▼ */
+    text-align: center;
+    padding: 25px 0;
+    margin: 0;
+    font-size: 5rem;
+    width: 100%;
+}
+
+/* h1のスマートフォン向けサイズ調整 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+    padding-top: 28px;
+  }
+}
+/* --- ハンバーガーボタン --- */
+.hamburger-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 2000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 32px;
+    height: 25px;
+    padding: 0;
+
+    /* ▼▼▼ ここからが修正・追加部分です ▼▼▼ */
+    /* Flexboxを使って、中の線をきれいに配置します */
+    display: flex;
+    flex-direction: column; /* 線を縦に並べます */
+    justify-content: space-between; /* 線を上下に均等に配置します */
+    /* ▲▲▲ ここまで ▲▲▲ */
+}
+
+.hamburger-btn span {
+    width: 100%;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 5px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    
+    /* ▼▼▼ ここからが修正・追加部分です ▼▼▼ */
+    /* X印アニメーションの基点となります */
+    position: relative; 
+    display: block; /* ブロック要素として扱います */
+    /* ▲▲▲ ここまで ▲▲▲ */
+}
+
+
+
+/* ▼▼▼ 追加 ▼▼▼ is-activeがボタン自体に付いた時のスタイル */
+.hamburger-btn.is-active {
+    left: 220px; /* サイドバーが開いた時に右に移動 */
+}
+/* ハンバーガーボタンのアニメーション（Xに変形） */
+.hamburger-btn.is-active span:nth-of-type(1) {
+    transform: translateY(11px) rotate(135deg);
+}
+.hamburger-btn.is-active span:nth-of-type(2) {
+    opacity: 0;
+}
+.hamburger-btn.is-active span:nth-of-type(3) {
+    transform: translateY(-11px) rotate(-135deg);
+}
+
+/* ハンバーガーボタンのアニメーション（Xに変形） */
+.hamburger-btn.is-active span:nth-of-type(1) {
+    transform: translateY(11px) rotate(135deg); /* Y方向の移動量を調整 */
+}
+.hamburger-btn.is-active span:nth-of-type(2) {
+    opacity: 0;
+}
+.hamburger-btn.is-active span:nth-of-type(3) {
+    transform: translateY(-11px) rotate(-135deg); /* Y方向の移動量を調整 */
+}
+
+
+
+/* --- サイドバー --- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 280px;
+    z-index: 1900;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 25px;
+    border-right: 1px solid transparent;
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+}
+.sidebar.is-visible {
+    transform: translateX(0);
+}
+.sidebar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1px; /* ボーダーが内側に入らないように調整 */
+    width: 1px;
+    height: 100%;
+    animation: vivid-neon-glow var(--animation-speed) linear infinite;
+}
+
+/* --- サイドバー内のコンテンツ --- */
+.sidebar-header {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sidebar ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    display: block;
+    padding: 15px 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.sidebar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+
+/* ★★★★★ アニメーション定義 ★★★★★ */
+
+/* h1のチカチカ光るアニメーション */
+@keyframes text-flicker-in-glow {
+  0% { opacity: 0; }
+  10% { opacity: 0; text-shadow: none; }
+  10.1% { opacity: 1; text-shadow: none; }
+  10.2% { opacity: 0; text-shadow: none; }
+  20% { opacity: 0; text-shadow: none; }
+  20.1% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .25); }
+  20.6% { opacity: 0; text-shadow: none; }
+  30% { opacity: 0; text-shadow: none; }
+  30.1% { opacity: 1; text-shadow: 0 0 30px rgba(223, 14, 14, 0.45), 0 0 60px rgba(255, 255, 255, .25); }
+  30.5% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .45), 0 0 60px rgba(255, 255, 255, .25); }
+  30.6% { opacity: 0; text-shadow: none; }
+  45% { opacity: 0; text-shadow: none; }
+  45.1% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .45), 0 0 60px rgba(255, 255, 255, .25); }
+  50% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .45), 0 0 60px rgba(255, 255, 255, .25); }
+  55% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .45), 0 0 60px rgba(255, 255, 255, .25); }
+  55.1% { opacity: 0; text-shadow: none; }
+  57% { opacity: 0; text-shadow: none; }
+  57.1% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .55), 0 0 60px rgba(255, 255, 255, .35); }
+  60% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .55), 0 0 60px rgba(255, 255, 255, .35); }
+  60.1% { opacity: 0; text-shadow: none; }
+  65% { opacity: 0; text-shadow: none; }
+  65.1% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .55), 0 0 60px rgba(255, 255, 255, .35), 0 0 100px rgba(255, 255, 255, .1); }
+  75% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .55), 0 0 60px rgba(255, 255, 255, .35), 0 0 100px rgba(255, 255, 255, .1); }
+  75.1% { opacity: 0; text-shadow: none; }
+  77% { opacity: 0; text-shadow: none; }
+  77.1% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .55), 0 0 60px rgba(255, 255, 255, .4), 0 0 110px rgba(255, 255, 255, .2), 0 0 100px rgba(255, 255, 255, .1); }
+  85% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .55), 0 0 60px rgba(255, 255, 255, .4), 0 0 110px rgba(255, 255, 255, .2), 0 0 100px rgba(255, 255, 255, .1); }
+  85.1% { opacity: 0; text-shadow: none; }
+  86% { opacity: 0; text-shadow: none; }
+  86.1% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .6), 0 0 60px rgba(255, 255, 255, .45), 0 0 110px rgba(255, 255, 255, .25), 0 0 100px rgba(255, 255, 255, .1); }
+  100% { opacity: 1; text-shadow: 0 0 30px rgba(255, 255, 255, .6), 0 0 60px rgba(255, 255, 255, .45), 0 0 110px rgba(255, 255, 255, .25), 0 0 100px rgba(255, 255, 255, .1); }
+}
+
+/* サイドバーの鮮やかに色が変化するアニメーション */
+@keyframes vivid-neon-glow {
+    0% { background: hsl(0, 100%, 50%); box-shadow: 0 0 10px hsl(0, 100%, 50%), 0 0 20px hsl(0, 100%, 50%); }
+    25% { background: hsl(90, 100%, 50%); box-shadow: 0 0 10px hsl(90, 100%, 50%), 0 0 20px hsl(90, 100%, 50%); }
+    50% { background: hsl(180, 100%, 50%); box-shadow: 0 0 10px hsl(180, 100%, 50%), 0 0 20px hsl(180, 100%, 50%); }
+    75% { background: hsl(270, 100%, 50%); box-shadow: 0 0 10px hsl(270, 100%, 50%), 0 0 20px hsl(270, 100%, 50%); }
+    100% { background: hsl(360, 100%, 50%); box-shadow: 0 0 10px hsl(360, 100%, 50%), 0 0 20px hsl(360, 100%, 50%); }
+}
+

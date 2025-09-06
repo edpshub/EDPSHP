@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDPS - HOME</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/2ndindexstyle.css">
+    <link rel="stylesheet" href="style/2ndindexmain.css">
+    <link rel="stylesheet" href="style/2ndindexgamestyle.css">
+        <!-- ▼▼▼ カード1専用のCSSを追加 ▼▼▼ -->
+    <link rel="stylesheet" href="style/card1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/TerminalTextEffect.css">
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="bg-section visible" id="bg-section-1"></div>
+        <div class="bg-section" id="bg-section-2"></div>
+        <div class="bg-section" id="bg-section-3"></div>
+        <div class="bg-section" id="bg-section-4"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <button class="hamburger-btn" aria-label="メニューを開閉する">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="sidebar">
+            <div class="sidebar-header"><h3>Menu</h3></div>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">EDPSHUB</a></li>
+                <li><a href="#">ACCESS</a></li>
+                <li><a href="#">Timeline</a></li>
+            </ul>
+        </nav>
+
+        <section class="content-section header-section">
+            <h1>EDPS</h1>
+        </section>
+
+        <section class="content-section text-effect-section">
+            <div class='console-container'>
+                <span id='text'></span><div class='console-underscore' id='console'>&#95;</div>
+            </div>
+        </section>
+
+        <section class="content-section carousel-section">
+            <main class="carousel-container">
+                <div class="card-carousel">
+                     <!-- ▼▼▼ Card 1の中身を置き換え ▼▼▼ -->
+                    <div class="card">
+                        <div class="card1-content-wrapper">
+                            <ul class="Words">
+                                <li class="Words-line"><p>&nbsp;</p><p>EDPS</p></li>
+                                <li class="Words-line"><p>EDPS</p><p>has</p></li>
+                                <li class="Words-line"><p>has</p><p>technology,</p></li>
+                                <li class="Words-line"><p>technology,</p><p>knowledge,</p></li>
+                                <li class="Words-line"><p>knowledge,</p><p>insight,</p></li>
+                                <li class="Words-line"><p>insight,</p><p>and fun.</p></li>
+                                <li class="Words-line"><p>and fun.</p><p>&nbsp;</p></li>
+                            </ul>
+                            <ul class="Words Words--small">
+                                <li class="Words-line"><p>&nbsp;</p><p>README</p></li>
+                                <li class="Words-line"><p>README</p><p>README</p></li>
+                                <li class="Words-line"><p>README</p><p>&nbsp;</p></li>
+                            </ul>
+                        </div>
+                        
+
+                    </div>
+                    <!-- ▲▲▲ ここまで ▲▲▲ -->
+                    <div class="card">準備中...</div>
+                    <div class="card">準備中...</div>
+                    <div class="card">準備中...</div>
+                </div>
+            </main>
+        </section>
+        
+        <section class="content-section game-section">
+            <div class="game-container">
+                
+                <canvas id="snake-game"></canvas>
+                <div class="game-info">
+                    <span>SCORE: <span id="score">0</span></span>
+                </div>
+                <div class="game-controls">
+                    <button id="up">↑</button>
+                    <div>
+                        <button id="left">←</button>
+                        <button id="down">↓</button>
+                        <button id="right">→</button>
+                    </div>
+                </div>
+                <div id="game-over-screen" class="hidden">
+                    <h2>GAME OVER</h2>
+                    <p>SCORE: <span id="final-score">0</span></p>
+                    <button id="restart-game">RESTART</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    
+    <script src="script/2ndindexscript.js" defer></script>
+    <script src="script/2ndindexmain.js" defer></script>
+    <script src="script/2ndindexgame.js" defer></script>
+    <script src="script/TerminalTextEffect.js" defer></script>
+</body>
+</html>

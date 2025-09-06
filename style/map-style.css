@@ -1,0 +1,32 @@
+.MAP-section {
+  /* Flexboxを使って中身を中央に配置する設定 */
+  display: flex;
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center;     /* 垂直方向の中央揃え */
+
+  /* 地図の上下に少し余白を追加 */
+  padding: 40px 0;
+}
+
+/* 地図自体のサイズを調整（お好みで変更してください） */
+.MAP-section iframe {
+  width: 80%;        /* 画面幅の80%に設定 */
+  max-width: 900px;  /* ただし、最大幅は900pxまで */
+  height: 450px;       /* 高さを450pxに設定 */
+  border-radius: 8px;/* 角を少し丸くする */
+  min-width:700px;
+}
+
+.MAP-container {
+  min-width:700px;
+  animation: neon-border-animation var(--neon-animation-duration) linear infinite;
+  height: 450px;
+}
+
+@keyframes neon-border-animation {
+    0%   { box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1); }
+    25%  { box-shadow: 0 0 15px var(--neon-color-2), inset 0 0 15px var(--neon-color-2); }
+    50%  { box-shadow: 0 0 15px var(--neon-color-3), inset 0 0 15px var(--neon-color-3); }
+    75%  { box-shadow: 0 0 15px var(--neon-color-4), inset 0 0 15px var(--neon-color-4); }
+    100% { box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1); }
+}

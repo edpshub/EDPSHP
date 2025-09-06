@@ -1,0 +1,103 @@
+/*
+ * Card 1 - Skewed Text Animation
+*/
+
+/* --- アニメーションのサイズ感を調整する変数 --- */
+:root {
+    --clip-height: 20px;
+    --line-height: 18px;
+    --font-size: 27px;
+    --left-offset: 11.6px;
+}
+/* スマートフォンでは少し小さくする */
+@media (max-width: 768px) {
+    :root {
+        --clip-height: 16px;
+        --line-height: 14px;
+        --font-size: 22px;
+        --left-offset: 9px;
+    }
+}
+/* ▼▼▼ 2つのulを縦に並べるためのラッパー ▼▼▼ */
+.card1-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:50px; /* 2つのアニメーションの間の余白 */
+    transform: translateX(-15%);
+}
+
+/* --- 親要素 (.Words) のスタイル --- */
+.Words {
+    margin: 0 auto;
+    font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    font-size: var(--font-size);
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    transform: translate3d(0, 0, 0);
+    -webkit-font-smoothing: antialiased;
+    color: white; /* 文字色を白に設定 */
+    padding: 0; /* 親の.cardのスタイルに合わせる */
+    list-style: none; /* ulの黒点を削除 */
+    float: left;
+}
+
+/* --- 各行の共通スタイル --- */
+.Words-line {
+    height: var(--clip-height);
+    overflow: hidden;
+    position: relative;
+}
+/* 奇数行と偶数行で傾きを変える */
+.Words-line:nth-child(odd) {
+    transform: skew(60deg, -30deg) scaleY(0.66667);
+}
+.Words-line:nth-child(even) {
+    transform: skew(0deg, -30deg) scaleY(1.33333);
+}
+
+/* 各行を階段状にずらす */
+.Words-line:nth-child(1) { left: calc(var(--left-offset) * 1); }
+.Words-line:nth-child(2) { left: calc(var(--left-offset) * 2); }
+.Words-line:nth-child(3) { left: calc(var(--left-offset) * 3); }
+.Words-line:nth-child(4) { left: calc(var(--left-offset) * 4); }
+.Words-line:nth-child(5) { left: calc(var(--left-offset) * 5); }
+.Words-line:nth-child(6) { left: calc(var(--left-offset) * 6); }
+.Words-line:nth-child(7) { left: calc(var(--left-offset) * 7); }
+
+
+/* --- テキスト(p)のスタイル --- */
+.Words-line p {
+    height: var(--clip-height);
+    line-height: var(--line-height);
+    padding: 0 10px;
+    transition: all .4s ease-in-out;
+    transform: translate3d(0, 0, 0);
+    vertical-align: top;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* --- ホバー時のアニメーション --- */
+.card:hover .Words p {
+    transform: translate3d(0, calc(-1 * var(--clip-height)), 0);
+}
+
+
+/* ▼▼▼ ここからが追加部分です ▼▼▼ */
+
+/* --- Card 1の背景画像設定 --- */
+/* カルーセル内の最初のカード(.card:first-child)の、紺色背景を担当する::before要素を上書きします */
+.card-carousel .card:first-child::before {
+    /* 紺色の単色背景を、画像に置き換えます */
+    background: 
+        /* 画像の上に半透明の黒い膜を重ねて、文字を読みやすくします */
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        /* ここに表示したい画像のパスを指定してください */
+        url('https://pbs.twimg.com/media/GvKbKd_a4AAQvKJ?format=jpg&name=small'); /* 例: imageフォルダのcard1_background.jpg */
+    
+    /* 画像が常に中央に表示されるように設定 */
+    background-size: cover;
+    background-position: center;
+}

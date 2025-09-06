@@ -1,0 +1,25 @@
+.hidden {
+    opacity:0;
+}
+.console-container {
+    font-family: 'Khula', sans-serif;
+    font-size: 2em; /* PCでのフォントサイズ */
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+    display: block;
+    color: white;
+}
+.console-underscore {
+    display:inline-block;
+    position:relative;
+    top:-0.14em;
+    left:10px;
+}
+
+/* スマートフォン向けの調整 */
+@media (max-width: 768px) {
+    .console-container {
+        font-size: 1.8em;
+    }
+}
