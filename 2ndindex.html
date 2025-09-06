@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="style/2ndindexstyle.css">
     <link rel="stylesheet" href="style/2ndindexmain.css">
     <link rel="stylesheet" href="style/2ndindexgamestyle.css">
-        <!-- ▼▼▼ カード1専用のCSSを追加 ▼▼▼ -->
     <link rel="stylesheet" href="style/card1.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/TerminalTextEffect.css">
@@ -32,29 +31,44 @@
         </button>
         <nav class="sidebar">
             <div class="sidebar-header"><h3>Menu</h3></div>
+            <!-- ▼▼▼ リンク先を修正 ▼▼▼ -->
             <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">EDPSHUB</a></li>
-                <li><a href="#">ACCESS</a></li>
-                <li><a href="#">Timeline</a></li>
+                <li><a href="2ndindex.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="hub.html">EDPSHUB</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+                <li><a href="timeline.html">TIMELINE</a></li>
             </ul>
+            <!-- ▼▼▼ Xへのリンクボタンを追加 ▼▼▼ -->
+            <div class="sidebar-footer">
+                <a href="https://x.com/home" target="_blank" class="x-button">
+                    <svg class="x-logo" viewBox="0 0 24 24" aria-hidden="true">
+                        <g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g>
+                    </svg>
+                </a>
+                                <!-- ▼▼▼ Instagramボタンを追加 ▼▼▼ -->
+                <a href="https://www.instagram.com/oecu_edps/" target="_blank" class="social-button">
+                    <svg class="social-logo" viewBox="0 0 24 24" aria-hidden="true">
+                        <g>
+                            <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2C22,19.4 19.4,22 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8C2,4.6 4.6,2 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4A3.6,3.6 0 0,0 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6A3.6,3.6 0 0,0 16.4,4H7.6M17.2,6.4A1.2,1.2 0 0,1 16,5.2A1.2,1.2 0 0,1 17.2,4A1.2,1.2 0 0,1 18.4,5.2A1.2,1.2 0 0,1 17.2,6.4M12,7.2A4.8,4.8 0 0,1 16.8,12A4.8,4.8 0 0,1 12,16.8A4.8,4.8 0 0,1 7.2,12A4.8,4.8 0 0,1 12,7.2M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"></path>
+                        </g>
+                    </svg>
+                </a>
+            </div>
         </nav>
 
+        <!-- (以降のコンテンツは変更なし) -->
         <section class="content-section header-section">
             <h1>EDPS</h1>
         </section>
-
         <section class="content-section text-effect-section">
             <div class='console-container'>
                 <span id='text'></span><div class='console-underscore' id='console'>&#95;</div>
             </div>
         </section>
-
         <section class="content-section carousel-section">
             <main class="carousel-container">
                 <div class="card-carousel">
-                     <!-- ▼▼▼ Card 1の中身を置き換え ▼▼▼ -->
                     <div class="card">
                         <div class="card1-content-wrapper">
                             <ul class="Words">
@@ -72,20 +86,15 @@
                                 <li class="Words-line"><p>README</p><p>&nbsp;</p></li>
                             </ul>
                         </div>
-                        
-
                     </div>
-                    <!-- ▲▲▲ ここまで ▲▲▲ -->
                     <div class="card">準備中...</div>
                     <div class="card">準備中...</div>
                     <div class="card">準備中...</div>
                 </div>
             </main>
         </section>
-        
         <section class="content-section game-section">
             <div class="game-container">
-                
                 <canvas id="snake-game"></canvas>
                 <div class="game-info">
                     <span>SCORE: <span id="score">0</span></span>
@@ -107,8 +116,6 @@
         </section>
     </div>
 
-
-    
     <script src="script/2ndindexscript.js" defer></script>
     <script src="script/2ndindexmain.js" defer></script>
     <script src="script/2ndindexgame.js" defer></script>

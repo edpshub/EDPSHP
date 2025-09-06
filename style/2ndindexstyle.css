@@ -290,3 +290,66 @@ h1 {
     100% { background: hsl(360, 100%, 50%); box-shadow: 0 0 10px hsl(360, 100%, 50%), 0 0 20px hsl(360, 100%, 50%); }
 }
 
+/* ▼▼▼ ここから追加 ▼▼▼ */
+/* --- サイドバー下部のフッター --- */
+.sidebar-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    text-align: center;
+}
+
+.x-button {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.x-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px var(--text-color);
+}
+
+.x-logo {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-color); /* アイコンの色を指定 */
+}
+/* ▲▲▲ ここまで追加 ▲▲▲ */
+/* --- サイドバー下部のフッター --- */
+.sidebar-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+    text-align: center;
+    /* ▼▼▼ 追加 ▼▼▼ */
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* ボタン間の余白 */
+}
+
+/* ▼▼▼ クラス名を汎用的なものに変更 ▼▼▼ */
+.social-button {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.social-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px var(--text-color);
+}
+
+.social-logo {
+    width: 24px;
+    height: 24px;
+    fill: var(--text-color);
+}
+/* ▲▲▲ ここまで ▲▲▲ */
+
