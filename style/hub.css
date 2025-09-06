@@ -250,3 +250,28 @@
     height: 120px;
 }
 /* ▲▲▲ ここまで ▲▲▲ */
+
+/* ▼▼▼ 年度切替ボタンのスタイルを追加 ▼▼▼ */
+.year-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.year-btn {
+    background: transparent;
+    border: 2px solid var(--hub-neon-color-1);
+    color: var(--hub-neon-color-1);
+    padding: 10px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.year-btn:hover, .year-btn.active {
+    background: var(--hub-neon-color-1);
+    color: #0c0c0f;
+    box-shadow: 0 0 15px var(--hub-neon-color-1);
+}
+/* ▲▲▲ ここまで ▲▲▲ */

@@ -68,43 +68,22 @@
                 </a>
             </div>
         </section>
-
-        <section class="content-section hub-works-section">
-            <div class="works-container">
-                <h2>成果物一覧</h2>
-<!-- ▼▼▼ ここからコントロールパネルを追加 ▼▼▼ -->
-                <div class="works-controls">
-                    <div class="search-bar">
-                        <input type="text" id="search-input" placeholder="キーワードで検索...">
-                    </div>
-                    <div class="tag-filters">
-                        <button class="tag-btn" data-tag="アプリ">アプリ</button>
-                        <button class="tag-btn" data-tag="AI">AI</button>
-                        <button class="tag-btn" data-tag="ゲーム">ゲーム</button>
-                        <button class="tag-btn" data-tag="システム">システム</button>
-                        <button class="tag-btn" data-tag="サーバー">サーバー</button>
-                        <button class="tag-btn" data-tag="電子工作">電子工作</button>
-                        <button class="tag-btn" data-tag="自作PC">自作PC</button>
-                    </div>
-                    <div class="view-toggle">
-                        <button id="grid-view-btn" class="active">Grid</button>
-                        <button id="list-view-btn">List</button>
-                    </div>
-                </div>
-                <!-- ▲▲▲ ここまで ▲▲▲ -->
-
-                <!-- ▼▼▼ この中身を空にします。JSが自動で成果物を生成します。 ▼▼▼ -->
-                <div class="works-grid" id="works-list">
-                </div>
-                <!-- ▲▲▲ ここまで ▲▲▲ -->
-            </div>
-        </section>
+        <div class="year-selector">
+            <button class="year-btn" data-year="2024">2024</button>
+            <button class="year-btn active" data-year="2025">2025</button>
+        </div>
+        <!-- ▼▼▼ 成果物セクションをプレースホルダーに変更 ▼▼▼ -->
+<section class="content-section hub-works-section" id="works-placeholder">
+            </section>
         <!-- ▲▲▲ ここまで ▲▲▲ -->
     </div>
     
     <!-- サイドバー用のスクリプトのみ読み込み -->
     <script src="script/2ndindexscript.js" defer></script>
         <!-- ▼▼▼ HUBページ専用のJavaScriptを追加 ▼▼▼ -->
+    <script src="script/works_content2024.js" defer></script>
+    <script src="script/works_content2025.js" defer></script>
     <script src="script/hub.js" defer></script>
+
 </body>
 </html>
