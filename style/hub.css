@@ -1,0 +1,252 @@
+/*
+ * HUBページ専用スタイル (hub.css)
+*/
+
+:root {
+    --hub-neon-color-1: rgba(0, 225, 255, 0.9);
+    --hub-neon-color-2: rgba(255, 100, 255, 0.9);
+}
+
+/* --- セクションの基本設定 --- */
+.hub-header-section {
+    min-height: 50vh;
+    text-align: center;
+    /* ▼▼▼ 追加: 中の要素を縦に並べるように設定 ▼▼▼ */
+    flex-direction: column;
+}
+.hub-navigation-section, .hub-works-section {
+    width: 100%;
+    min-height: 20vh;
+    padding: 5vh 0;
+    align-items: flex-start !important;
+}
+
+/* ヘッダーセクション内のh1の下パディングをなくし、サブタイトルとの距離を詰めます */
+.hub-header-section h1 {
+    padding-bottom: 0;
+}
+.hub-subtitle {
+    font-size: 1.2rem;
+    color: #a9a9a9;
+    /* h1との間に少しだけ余白を設定します */
+    margin-top: 1rem;
+}
+
+
+/* --- HUBナビゲーションカード --- */
+/* (これ以降のスタイルは変更ありません) */
+.hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.hub-card {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* 回転する光のエフェクト */
+.hub-card::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, var(--hub-neon-color-1), transparent 30%);
+    animation: rotate 4s linear infinite;
+}
+
+/* カード本体の背景 */
+.hub-card::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    inset: 2px;
+    background: #121216;
+    border-radius: 8px;
+}
+
+.hub-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+}
+
+/* テキストコンテンツ */
+.hub-card h3,
+.hub-card p {
+    position: relative;
+    z-index: 2;
+}
+.hub-card h3 {
+    font-size: 1.8rem;
+    margin: 0 0 15px 0;
+    color: var(--hub-neon-color-1);
+}
+.hub-card p {
+    font-size: 1rem;
+    color: #a9a9a9;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+
+/* --- 成果物一覧 --- */
+.works-container {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+}
+.works-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-shadow: 0 0 10px var(--hub-neon-color-2);
+}
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+.work-item {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s;
+}
+.work-item:hover {
+    transform: scale(1.05);
+}
+.work-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+.work-item .work-info {
+    padding: 20px;
+}
+.work-item h4 {
+    font-size: 1.3rem;
+    margin: 0 0 10px 0;
+}
+.work-item p {
+    font-size: 0.9rem;
+    color: #a9a9a9;
+    margin: 0 0 15px 0;
+}
+.work-item .work-tags span {
+    background: var(--hub-neon-color-2);
+    color: #0c0c0f;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ▼▼▼ ここからコントロールパネルのスタイルを追加 ▼▼▼ */
+.works-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+    padding: 20px;
+    background: rgba(18, 18, 22, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.search-bar { flex-grow: 2; }
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    background: #0c0c0f;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+}
+
+.tag-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.tag-btn {
+    background: transparent;
+    border: 1px solid var(--hub-neon-color-1);
+    color: var(--hub-neon-color-1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.tag-btn:hover, .tag-btn.active {
+    background: var(--hub-neon-color-1);
+    color: #0c0c0f;
+    box-shadow: 0 0 10px var(--hub-neon-color-1);
+}
+
+.view-toggle button {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #a9a9a9;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+.view-toggle button:first-child { border-radius: 5px 0 0 5px; }
+.view-toggle button:last-child { border-radius: 0 5px 5px 0; border-left: none; }
+.view-toggle button.active {
+    background: var(--hub-neon-color-2);
+    color: #0c0c0f;
+    border-color: var(--hub-neon-color-2);
+}
+/* ▲▲▲ ここまで ▲▲▲ */
+
+
+/* --- 成果物グリッド/リスト --- */
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    transition: all 0.5s ease;
+}
+.work-item {
+    background: #121216;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s, opacity 0.5s;
+}
+/* ▼▼▼ リスト表示用のスタイルを追加 ▼▼▼ */
+.works-grid.list-view {
+    grid-template-columns: 1fr; /* 1列にする */
+}
+.works-grid.list-view .work-item {
+    display: flex;
+    align-items: center;
+}
+.works-grid.list-view .work-item img {
+    width: 200px;
+    height: 120px;
+}
+/* ▲▲▲ ここまで ▲▲▲ */

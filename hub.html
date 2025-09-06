@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDPS - HUB</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    
+    <!-- 共通スタイルとHUB専用スタイルを読み込み -->
+    <link rel="stylesheet" href="style/2ndindexstyle.css">
+    <link rel="stylesheet" href="style/hub.css">
+</head>
+<body>
+
+    <!-- 共通の背景レイヤー -->
+    <div class="background-container">
+        <div class="bg-section visible" id="bg-section-1"></div>
+    </div>
+
+    <!-- 共通のコンテンツラッパー -->
+    <div class="content-wrapper">
+        <!-- 共通のサイドバー -->
+        <button class="hamburger-btn" aria-label="メニューを開閉する">
+            <span></span><span></span><span></span>
+        </button>
+        <nav class="sidebar">
+            <div class="sidebar-header"><h3>Menu</h3></div>
+            <ul>
+                <li><a href="2ndindex.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="hub.html">EDPSHUB</a></li>
+                <li><a href="access.html">ACCESS</a></li>
+                <li><a href="timeline.html">TIMELINE</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <a href="https://x.com/home" target="_blank" class="social-button">
+                    <svg class="social-logo" viewBox="0 0 24 24"><g><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
+                </a>
+                <a href="https://www.instagram.com/oecu_edps/" target="_blank" class="social-button">
+                    <svg class="social-logo" viewBox="0 0 24 24"><g><path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2C22,19.4 19.4,22 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8C2,4.6 4.6,2 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4A3.6,3.6 0 0,0 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6A3.6,3.6 0 0,0 16.4,4H7.6M17.2,6.4A1.2,1.2 0 0,1 16,5.2A1.2,1.2 0 0,1 17.2,4A1.2,1.2 0 0,1 18.4,5.2A1.2,1.2 0 0,1 17.2,6.4M12,7.2A4.8,4.8 0 0,1 16.8,12A4.8,4.8 0 0,1 12,16.8A4.8,4.8 0 0,1 7.2,12A4.8,4.8 0 0,1 12,7.2M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z"></path></g></svg>
+                </a>
+            </div>
+        </nav>
+
+        <!-- ▼▼▼ ここからHUBページのコンテンツ ▼▼▼ -->
+        <section class="content-section hub-header-section">
+            <h1>EDPS HUB</h1>
+            <p class="hub-subtitle">私たちの創造性が集まる場所へようこそ。</p>
+        </section>
+
+        <section class="content-section hub-navigation-section">
+            <div class="hub-grid">
+                <a href="#app-hub" class="hub-card">
+                    <h3>AppHUB</h3>
+                    <p>開発されたアプリケーションをダウンロード、またはアクセスできます。</p>
+                </a>
+                <a href="#game-hub" class="hub-card">
+                    <h3>GameHUB</h3>
+                    <p>開発されたゲームをダウンロード、またはプレイできます。</p>
+                </a>
+                <a href="#article-hub" class="hub-card">
+                    <h3>ArticleHUB</h3>
+                    <p>発行されている機関紙や技術記事を閲覧できます。</p>
+                </a>
+            </div>
+        </section>
+
+        <section class="content-section hub-works-section">
+            <div class="works-container">
+                <h2>成果物一覧</h2>
+<!-- ▼▼▼ ここからコントロールパネルを追加 ▼▼▼ -->
+                <div class="works-controls">
+                    <div class="search-bar">
+                        <input type="text" id="search-input" placeholder="キーワードで検索...">
+                    </div>
+                    <div class="tag-filters">
+                        <button class="tag-btn" data-tag="アプリ">アプリ</button>
+                        <button class="tag-btn" data-tag="AI">AI</button>
+                        <button class="tag-btn" data-tag="ゲーム">ゲーム</button>
+                        <button class="tag-btn" data-tag="システム">システム</button>
+                        <button class="tag-btn" data-tag="サーバー">サーバー</button>
+                        <button class="tag-btn" data-tag="電子工作">電子工作</button>
+                        <button class="tag-btn" data-tag="自作PC">自作PC</button>
+                    </div>
+                    <div class="view-toggle">
+                        <button id="grid-view-btn" class="active">Grid</button>
+                        <button id="list-view-btn">List</button>
+                    </div>
+                </div>
+                <!-- ▲▲▲ ここまで ▲▲▲ -->
+
+                <!-- ▼▼▼ この中身を空にします。JSが自動で成果物を生成します。 ▼▼▼ -->
+                <div class="works-grid" id="works-list">
+                </div>
+                <!-- ▲▲▲ ここまで ▲▲▲ -->
+            </div>
+        </section>
+        <!-- ▲▲▲ ここまで ▲▲▲ -->
+    </div>
+    
+    <!-- サイドバー用のスクリプトのみ読み込み -->
+    <script src="script/2ndindexscript.js" defer></script>
+        <!-- ▼▼▼ HUBページ専用のJavaScriptを追加 ▼▼▼ -->
+    <script src="script/hub.js" defer></script>
+</body>
+</html>
