@@ -87,5 +87,9 @@ const worksData2025 = `
 	<div class="work-item" data-tags="	準備中	">	<img src="	#	" alt="	準備中	">	<div class="work-info">	<h4>	汎用機能統合AiーNeoChat	</h4>	<p>	準備中	</p>	<div class="work-tags"><span>	準備中	</span></div>	</div>	 </div>	
 	<div class="work-item" data-tags="	準備中	">	<img src="	#	" alt="	準備中	">	<div class="work-info">	<h4>	二つのディレクトリの内両方に存在するファイルのみをコピーするbatアプリ	</h4>	<p>	準備中	</p>	<div class="work-tags"><span>	準備中	</span></div>	</div>	 </div>	
 	<div class="work-item" data-tags="	準備中	">	<img src="	#	" alt="	準備中	">	<div class="work-info">	<h4>	サーバー一括管理ソフト	</h4>	<p>	準備中	</p>	<div class="work-tags"><span>	準備中	</span></div>	</div>	 </div>	
-	<div class="work-item" data-tags="	準備中	">	<img src="	#	" alt="	準備中	">	<div class="work-info">	<h4>	音声会話型Ai　NEOTalk	</h4>	<p>	準備中	</p>	<div class="work-tags"><span>	準備中	</span></div>	</div>	 </div>	 </div></div>
+	<div class="work-item" data-tags="	準備中	">	<img src="	#	" alt="	準備中	">	<div class="work-info">	<h4>	音声会話型Ai　NEOTalk	</h4>	<p>	準備中	</p>	<div class="work-tags"><span>	準備中	</span></div>	</div>	 </div>	
+  	<div class="work-item" data-tags="	準備中	">	<img src="	#	" alt="	準備中	">	<div class="work-info">	<h4>	EDPS公式サイト0.03.01　大幅なリニューアル	</h4>	<p>	準備中	</p>	<div class="work-tags"><span>	準備中	</span></div>	</div>	 </div>	 
+  
+    </div>
+    </div>
 `;
