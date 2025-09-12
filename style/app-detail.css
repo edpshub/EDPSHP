@@ -1,0 +1,320 @@
+/* ベースカラーとフォント */
+:root {
+    --primary-bg: #0d0d10;
+    --secondary-bg: rgba(20, 20, 22, 0.9);
+    --accent-color-1: #00e6e6; /* Cyan Neon */
+    --accent-color-2: #e600e6; /* Magenta Neon */
+    --text-color-light: #e0e0e0;
+    --text-color-medium: #a0a0a0;
+    --border-color: rgba(0, 230, 230, 0.2);
+    --glow-shadow-1: 0 0 15px rgba(0, 230, 230, 0.4);
+    --glow-shadow-2: 0 0 10px rgba(230, 0, 230, 0.3);
+    --glass-effect: rgba(20, 20, 22, 0.85);
+    --blur-strength: 15px;
+}
+
+/* 全体のリセットと基本スタイル */
+body.app-page {
+    font-family: 'Poppins', sans-serif, 'Share Tech Mono', monospace; /* フォント優先度を変更 */
+    color: var(--text-color-light);
+    background-color: var(--primary-bg);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* 横スクロール禁止 */
+    position: relative;
+}
+
+/* 背景セクション */
+body.app-page .bg-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://placehold.co/1920x1080/1a1a1c/2c2c2e?text=App+Background+Cyber');
+    background-size: cover;
+    background-position: center;
+    filter: blur(12px) grayscale(80%) brightness(0.4); /* ぼかし、グレー、暗さ強調 */
+    transform: scale(1.1); /* 背景の隙間を防ぐため少し拡大 */
+    z-index: -2;
+    animation: bg-pan 20s infinite alternate linear; /* 背景のゆっくりとしたパンアニメーション */
+}
+
+@keyframes bg-pan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+/* 背景オーバーレイ（グリッドとグラデーション） */
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(0, 230, 230, 0.05) 30px, transparent 31px),
+        repeating-linear-gradient(90deg, transparent, transparent 29px, rgba(0, 230, 230, 0.05) 30px, transparent 31px),
+        linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8) 100%); /* 上下のフェード */
+    z-index: -1;
+}
+
+/* セクション全体のスタイル */
+.app-detail-section {
+    position: relative;
+    padding: 4rem 1rem; /* 上下左右のパディングを調整 */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    z-index: 1; /* コンテンツが手前に来るように */
+}
+
+/* コンテンツコンテナ */
+.app-detail-container {
+    width: 100%;
+    max-width: 1000px; /* 最大幅を少し広げる */
+    background-color: var(--glass-effect); /* 半透明の背景 */
+    backdrop-filter: blur(var(--blur-strength)); /* すりガラス効果 */
+    -webkit-backdrop-filter: blur(var(--blur-strength));
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 2.5rem; /* パディングを増やす */
+    box-shadow: var(--glow-shadow-1), 0 0 30px rgba(0, 0, 0, 0.5); /* グローと深みのある影 */
+    animation: fade-in-up 1s ease-out; /* フェードインアニメーション */
+}
+
+@keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* AppHUBへ戻るボタン */
+.back-button-wrapper {
+    margin-bottom: 2rem;
+}
+.back-to-hub-btn {
+    color: var(--text-color-medium);
+    text-decoration: none;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 230, 230, 0.1);
+}
+.back-to-hub-btn:hover {
+    color: var(--accent-color-1);
+    border-color: var(--accent-color-1);
+    box-shadow: var(--glow-shadow-1);
+    transform: translateX(-5px);
+}
+.back-to-hub-btn::before {
+    content: '‹';
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* ヘッダー */
+.app-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2.5rem;
+    position: relative; /* ネオンラインのため */
+}
+.app-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 30%; /* 短いネオンライン */
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-color-1), transparent);
+    box-shadow: var(--glow-shadow-1);
+}
+
+.app-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 25px; /* 少し角丸を強調 */
+    object-fit: cover;
+    border: 2px solid var(--accent-color-1);
+    box-shadow: var(--glow-shadow-1);
+    transition: transform 0.3s ease;
+}
+.app-icon:hover {
+    transform: scale(1.05);
+}
+.app-title-group .app-title {
+    font-family: 'Orbitron', sans-serif, 'Poppins'; /* サイバー系フォントを優先 */
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 700;
+    color: var(--text-color-light);
+    text-shadow: 0 0 10px rgba(0, 230, 230, 0.5); /* タイトルにグロー */
+}
+.app-title-group .app-subtitle {
+    font-size: 1.2rem;
+    margin: 0.5rem 0 0;
+    color: var(--text-color-medium);
+    font-style: italic;
+}
+
+/* コンテンツの各セクション */
+.app-content-body h2 {
+    font-family: 'Poppins', sans-serif, 'Share Tech Mono', monospace;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--border-color); /* 破線に変更 */
+    color: var(--accent-color-1);
+    text-shadow: 0 0 8px rgba(0, 230, 230, 0.3);
+    position: relative;
+}
+.app-content-body h2::before {
+    content: '// '; /* コメントアウト風のプレフィックス */
+    color: var(--accent-color-2);
+}
+
+.app-content-body p {
+    line-height: 1.8;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+}
+.app-description, .app-specs, .download-section {
+    margin-bottom: 3.5rem;
+    padding: 1rem; /* 内側のパディング */
+    background-color: rgba(0, 0, 0, 0.2); /* やや暗い背景 */
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* スクリーンショット画像 */
+.app-screenshot {
+    width: 100%;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border: 2px solid var(--accent-color-2);
+    box-shadow: var(--glow-shadow-2);
+    transition: transform 0.3s ease;
+}
+.app-screenshot:hover {
+    transform: scale(1.01);
+}
+
+/* 推奨環境テーブル */
+.spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+.spec-table th, .spec-table td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Share Tech Mono', monospace; /* モノスペースフォント */
+}
+.spec-table th {
+    width: 35%; /* 幅を広げる */
+    font-weight: 600;
+    color: var(--accent-color-1);
+    background-color: rgba(0, 230, 230, 0.08); /* アクセントカラーの背景 */
+    border-right: 1px solid var(--border-color);
+}
+.spec-table td {
+    color: var(--text-color-light);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+.spec-table tr:last-child th, .spec-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ダウンロードボタン */
+.download-section p {
+    margin-bottom: 1.5rem;
+}
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--accent-color-1), var(--accent-color-2)); /* ネオングラデーション */
+    color: #ffffff;
+    padding: 1.2rem 3rem; /* パディングを増やす */
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.1em; /* 文字間隔を広げる */
+    box-shadow: var(--glow-shadow-1), var(--glow-shadow-2); /* 複数のグローシャドウ */
+    transition: all 0.4s ease;
+    border: 1px solid var(--accent-color-1); /* 枠線 */
+}
+.download-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: linear-gradient(45deg, var(--accent-color-2), var(--accent-color-1));
+    border-color: var(--accent-color-2);
+    box-shadow: 0 0 25px rgba(0, 230, 230, 0.8), 0 0 20px rgba(230, 0, 230, 0.6); /* ホバー時のグロー強調 */
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .app-detail-section {
+        padding: 2rem 0.5rem;
+    }
+    .app-detail-container {
+        padding: 1.5rem;
+    }
+    .app-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    .app-icon {
+        width: 90px;
+        height: 90px;
+    }
+    .app-title-group .app-title {
+        font-size: 2rem;
+    }
+    .app-title-group .app-subtitle {
+        font-size: 1rem;
+    }
+    .app-content-body h2 {
+        font-size: 1.5rem;
+    }
+    .spec-table th, .spec-table td {
+        padding: 0.8rem;
+        display: block; /* モバイルで縦に並べる */
+        width: 100%;
+        border-right: none;
+    }
+    .spec-table th {
+        background-color: rgba(0, 230, 230, 0.15); /* 背景色を少し濃く */
+        border-bottom: none; /* 下線を削除 */
+        border-radius: 5px 5px 0 0; /* 上部を角丸に */
+    }
+    .spec-table td {
+        border-radius: 0 0 5px 5px; /* 下部を角丸に */
+        margin-bottom: 0.5rem; /* 各行の間にスペース */
+    }
+    .spec-table tr {
+        display: block;
+        margin-bottom: 1rem; /* 各スペックの間にスペース */
+        border-bottom: 2px solid var(--accent-color-2); /* 各スペックの区切り */
+        box-shadow: var(--glow-shadow-2);
+    }
+    .download-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}

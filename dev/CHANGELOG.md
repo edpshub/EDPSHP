@@ -13,3 +13,19 @@
 
 ### Fixed
 - `temp.html` を修正
+
+## [0.03.21] - 2025-09-12
+### Added
+- `apphub.html`
+- `gamehub.html`
+- `dir:apphub`
+- `dir:gamehub`
+- `apphub.js`
+- `hub.js`
+- `apphub/app_data.js`
+- `auto.re.open.html`
+- `Locky.html`
+- `ownserver.html`
+- `PunchliteV2.html`
+- `Texlite.html`
+- `apptenmp.html`

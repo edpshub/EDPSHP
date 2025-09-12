@@ -274,4 +274,10 @@
     color: #0c0c0f;
     box-shadow: 0 0 15px var(--hub-neon-color-1);
 }
+
+.work-item-link {
+    text-decoration: none; /* 下線を消す */
+    color: inherit;       /* 親要素の色を継承する */
+    display: block;       /* ブロック要素として扱い、クリック範囲を広げる */
+}
 /* ▲▲▲ ここまで ▲▲▲ */

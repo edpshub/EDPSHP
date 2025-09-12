@@ -1,0 +1,204 @@
+/*
+ * Neon Dark Theme - Application Page (app_template.css)
+ * Version: 1.1
+ * Author: Gemini
+ * Description: A futuristic, cyberpunk-themed template for an application page.
+ */
+
+/* ★★★★★ THEME CUSTOMIZATION VARIABLES ★★★★★ */
+:root {
+    /* --- Background --- */
+    /* ▼▼▼ To change the background, replace the URL below ▼▼▼ */
+    --background-image-url: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=2020&auto=format&fit=crop');
+    --background-overlay-color: rgba(10, 15, 20, 0.7); /* Dark semi-transparent overlay */
+
+    /* --- Colors --- */
+    --dark-bg: #000000;
+    --dark-card-bg: rgba(10, 10, 10, 0.65); /* More transparent for better background visibility */
+    --dark-text-color: #e0e0e0;
+    --highlight-text-color: #ffffff;
+    --dark-text-shadow: rgba(224, 224, 224, 0.5);
+
+    /* --- Neon Animation Colors --- */
+    --neon-color-1: rgba(0, 255, 255, 0.8);   /* Cyan */
+    --neon-color-2: rgba(255, 0, 255, 0.8);   /* Magenta */
+    --neon-color-3: rgba(0, 123, 255, 0.8);   /* Blue */
+    --neon-color-4: rgba(255, 0, 120, 0.8);   /* Pink */
+
+    /* --- Animation Speed --- */
+    --neon-animation-duration: 8s; /* Slightly slower for a calmer effect */
+}
+
+/* ===== General Body & Background Styling ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--dark-text-color);
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+/* This pseudo-element creates the blurred and tinted background effect */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: var(--background-image-url);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps the background static on scroll */
+    filter: blur(8px) grayscale(50%); /* Blur and desaturate the image */
+    background-color: var(--background-overlay-color);
+    z-index: -1;
+}
+
+/* ===== The Core Neon Box Component ===== */
+.neon-box {
+    width: 100%;
+    max-width: 900px;
+    background: var(--dark-card-bg);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 30px 40px;
+    
+    box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1);
+    animation: neon-border-animation var(--neon-animation-duration) linear infinite;
+}
+
+/* ===== Neon Border Animation Keyframes ===== */
+@keyframes neon-border-animation {
+    0%, 100% { box-shadow: 0 0 15px var(--neon-color-1), inset 0 0 15px var(--neon-color-1); }
+    25%      { box-shadow: 0 0 15px var(--neon-color-2), inset 0 0 15px var(--neon-color-2); }
+    50%      { box-shadow: 0 0 15px var(--neon-color-3), inset 0 0 15px var(--neon-color-3); }
+    75%      { box-shadow: 0 0 15px var(--neon-color-4), inset 0 0 15px var(--neon-color-4); }
+}
+
+/* ===== Added Page Elements Styling ===== */
+
+/* --- Back Button --- */
+.back-button {
+    display: inline-block;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+    color: var(--dark-text-color);
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.back-button:hover {
+    opacity: 1;
+    color: var(--neon-color-1);
+}
+
+/* --- Header --- */
+.app-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
+}
+
+.app-header h1 {
+    font-family: 'Orbitron', sans-serif; /* Futuristic font for the title */
+    font-size: 2.5em;
+    color: var(--highlight-text-color);
+    text-shadow: 0 0 10px var(--neon-color-1), 0 0 20px var(--neon-color-1);
+    margin: 0;
+}
+
+.app-header p {
+    font-size: 1.1em;
+    color: var(--dark-text-color);
+    opacity: 0.8;
+}
+
+/* --- Content Sections --- */
+.app-section {
+    margin-bottom: 35px;
+}
+
+.app-section h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5em;
+    border-left: 3px solid var(--neon-color-2);
+    padding-left: 15px;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px var(--dark-text-shadow);
+}
+
+.app-section h2 .highlight {
+    color: var(--neon-color-2);
+    margin-right: 10px;
+}
+
+/* --- Requirements List --- */
+.requirements-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.requirements-list li {
+    margin-bottom: 10px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.requirements-list strong {
+    color: var(--highlight-text-color);
+    margin-right: 8px;
+}
+
+/* --- Download Section & Button --- */
+.download-section {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--highlight-text-color);
+    background: linear-gradient(45deg, var(--neon-color-2), var(--neon-color-3));
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 0 20px var(--neon-color-2), 0 0 30px var(--neon-color-3);
+}
+
+.alternative-link {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.alternative-link a {
+    color: var(--neon-color-1);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.alternative-link a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 5px var(--neon-color-1);
+}
