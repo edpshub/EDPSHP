@@ -1,0 +1,102 @@
+/* style/article-list.css */
+
+.article-list-section {
+    /* 他のCSS（2ndindexmain.cssなど）の影響でflexやgridが適用されるのを防ぐため、
+      display: block; を明示的に指定し、要素が縦に並ぶようにします。
+    */
+    display: block; 
+    
+    background: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ▼▼▼ 追加 ▼▼▼ */
+/* タイトル・説明文のコンテナ */
+.article-description {
+    /* リストコンテナとの間に余白を設ける */
+    margin-bottom: 2rem; 
+}
+/* ▲▲▲ 追加 ▲▲▲ */
+
+
+.article-list-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    border-bottom: 2px solid #00ffff;
+    padding-bottom: 10px;
+    margin-bottom: 1rem;
+}
+
+.article-list-section p {
+    font-family: 'Poppins', sans-serif;
+    color: #eee;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#article-list-container {
+    /* ▼▼▼ 変更 ▼▼▼ */
+    /* .article-description に margin-bottom を設定したため、こちらは 0 に変更 */
+    margin-top: 0; 
+}
+
+.article-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-item {
+    margin-bottom: 1rem;
+    border: 1px solid #00ffff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.article-item:hover {
+    background-color: rgba(0, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 255, 255, 0.2);
+}
+
+.article-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.article-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.article-date {
+    font-size: 0.9rem;
+    color: #ccc;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+/* 読み込み中・エラーメッセージ */
+#article-list-container p {
+    color: #ccc;
+    font-style: italic;
+    text-align: center;
+    /* ▼▼▼ 追加 ▼▼▼ */
+    /* エラーメッセージがコンテナの中央に来るように調整 */
+    padding: 2rem 0;
+}
