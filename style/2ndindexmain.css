@@ -4,111 +4,141 @@
   inherits: false;
 }
 
-/* --- カルーセル全体のコンテナ --- */
-/* --- カルーセル全体のコンテナ --- */
+/* --- 3D Carousel Container --- */
 .carousel-container {
   width: 100%;
+  height: 60vh;
+  /* Fixed height for the stage */
   position: absolute;
-  top: 55%;
+  top: 50%;
   transform: translateY(-50%);
-  
-  perspective: 1500px;
+
+  perspective: 2000px;
+  /* Deep perspective */
   user-select: none;
-  overflow-x: hidden;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* --- カードが並ぶカルーセル本体 --- */
+/* --- The Rotating Cylinder --- */
 .card-carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-/* --- カードの基本スタイル --- */
-.card {
-  background: transparent;
-  width: 33vw;
-  max-width: 340px;
-  aspect-ratio: 1 / 1.5;
   position: relative;
+  width: 340px;
+  /* Reference width equal to card width */
+  height: 510px;
+  /* Reference height */
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* --- Card Base Styles --- */
+.card {
+  text-decoration: none;
+  background: rgba(0, 10, 20, 0.85);
+  width: 340px;
+  height: 510px;
+  /* Reset layout constraints for absolute positioning */
+  position: absolute;
+  left: 0;
+  top: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(88 199 250 / 0%);
+
+  color: var(--neon-cyan);
   font-size: 2em;
-  font-family: 'Poppins', cursive;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
   cursor: pointer;
-  margin: 0 2vw;
-  transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1), opacity 0.6s ease, color 1s;
-  opacity: 0.4;
-  /* z-indexの基準点とする */
-  isolation: isolate;
+
+  /* Initial state: will be overridden by JS for position */
+  opacity: 0.6;
+  transition: opacity 0.5s, box-shadow 0.5s, border-color 0.5s;
+
+  /* Fix scrollbar issues */
+  overflow: hidden;
+
+  /* Refined Border */
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.05);
+  backdrop-filter: blur(10px);
+
+  /* Ensure backface is hidden or styled if we want double sided */
+  backface-visibility: hidden;
+  -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, rgba(0, 0, 0, 0.2));
 }
 
-/* --- カードの状態別スタイル --- */
+/* Active State (Front facing) */
 .card.active {
   opacity: 1;
-  transform: scale(1) rotateY(0deg);
-  color: rgb(88 199 250 / 100%);
-}
-.card.left {
-  transform: scale(0.85) rotateY(45deg);
-}
-.card.right {
-  transform: scale(0.85) rotateY(-45deg);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 40px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);
+  z-index: 10;
 }
 
 
-/* ▼▼▼ ホバーエフェクトの修正 ▼▼▼ */
-/* ホバー時にテキストを表示 */
+/* --- Hover Effects --- */
 .card:not(.active):hover {
-  color: rgb(88 199 250 / 100%);
-}
-/* ホバー時に光彩エフェクト(::after)のみを消す */
-.card:hover::after {
-  animation: none;
-  opacity: 0;
+  opacity: 0.9;
+  border-color: rgba(0, 243, 255, 0.6);
 }
 
-
-/* --- カードのネオン効果と背景 --- */
-
-/* 紺色の背景 (z-index: -1でコンテンツの真後ろ) */
+/* --- Decoration Elements (Pseudo elements) --- */
 .card::before {
   content: "";
   position: absolute;
-  /* ▼▼▼ z-indexを変更 ▼▼▼ */
   z-index: -1;
-  inset: 3px;
-  background: #0d111c;
-  border-radius: 6px;
+  inset: 5px;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid rgba(0, 243, 255, 0.1);
 }
 
-/* ネオンボーダーと背後の光彩 (z-index: -2で一番後ろ) */
 .card::after {
   content: "";
   position: absolute;
-  /* ▼▼▼ z-indexを変更 ▼▼▼ */
   z-index: -2;
-  inset: 0;
-  border-radius: 8px;
-  background-image: linear-gradient(
-    var(--card-rotate), #5ddcff, #3c67e3 43%, #4e00c2);
-  box-shadow: 0 0 10px 5px rgba(60, 103, 227, 0.5);
-  animation: spin 2.5s linear infinite;
-  transition: opacity 0.5s;
+  inset: -2px;
+  border: 2px solid transparent;
+  clip-path: polygon(0 10%, 10% 0, 90% 0, 100% 10%,
+      100% 90%, 90% 100%, 10% 100%, 0 90%);
 }
 
-
-/* --- アニメーション定義 --- */
-@keyframes spin {
-  0% {
-    --card-rotate: 0deg;
-  }
-  100% {
-    --card-rotate: 360deg;
-  }
+/* --- Card Backgrounds (Using Classes for Duplication Support) --- */
+.card-type-about::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/card_about.png');
+  background-size: cover;
+  background-position: center;
 }
 
+.card-type-hub::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/card_hub.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.card-type-access::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/card_access.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.card-type-timeline::before {
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../images/card_timeline.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Enhancements for text visibility */
+.card-content h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.2rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px #000;
+  margin: 0;
+  z-index: 10;
+}

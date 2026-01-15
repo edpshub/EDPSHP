@@ -9,7 +9,7 @@ const worksData2025 = `
             <button class="tag-btn" data-tag="ゲーム">ゲーム</button>
             <button class="tag-btn" data-tag="システム">システム</button>
             <button class="tag-btn" data-tag="サーバー">サーバー</button>
-            <button class="tag-btn" data-tag="電子工作">電子工作</button>
+            <button class="tag-btn" data-tag="IOT">IOT</button>
             <button class="tag-btn" data-tag="自作PC">自作PC</button>
         </div>
         <div class="view-toggle">

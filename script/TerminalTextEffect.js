@@ -1,5 +1,5 @@
 // function([string1, string2], target id, [color1, color2])
-consoleText(['電子計算組織研究会（EDPS）へようこそ', 'プログラミングや　電子工作を活用し', 'アプリ開発','ゲーム開発','ガジェット制作','自作PCなど','テクノロジーを駆使した','高度でクリエイティブな','モノづくり に挑戦する団体です'], 'text',['White','White','White']);
+consoleText(['電子計算組織研究会（EDPS）へようこそ', 'プログラミングや　IOTを活用し', 'アプリ開発', 'ゲーム開発', 'ガジェット制作', '自作PCなど', 'テクノロジーを駆使した', '高度でクリエイティブな', 'モノづくり に挑戦する団体です'], 'text', ['White', 'White', 'White']);
 
 function consoleText(words, id, colors) {
   if (colors === undefined) colors = ['#fff'];
@@ -10,12 +10,12 @@ function consoleText(words, id, colors) {
   var waiting = false;
   var target = document.getElementById(id)
   target.setAttribute('style', 'color:' + colors[0])
-  window.setInterval(function() {
+  window.setInterval(function () {
 
     if (letterCount === 0 && waiting === false) {
       waiting = true;
       target.innerHTML = words[0].substring(0, letterCount)
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         var usedColor = colors.shift();
         colors.push(usedColor);
         var usedWord = words.shift();
@@ -27,7 +27,7 @@ function consoleText(words, id, colors) {
       }, 1000)
     } else if (letterCount === words[0].length + 1 && waiting === false) {
       waiting = true;
-      window.setTimeout(function() {
+      window.setTimeout(function () {
         x = -1;
         letterCount += x;
         waiting = false;
@@ -37,7 +37,7 @@ function consoleText(words, id, colors) {
       letterCount += x;
     }
   }, 120)
-  window.setInterval(function() {
+  window.setInterval(function () {
     if (visible === true) {
       con.className = 'console-underscore hidden'
       visible = false;

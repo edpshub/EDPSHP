@@ -1,0 +1,228 @@
+/* --- System Monitor Section --- */
+.monitor-section {
+    position: relative;
+    width: 100%;
+    min-height: 80vh;
+    background: #050510;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 50px 0;
+}
+
+/* Background Hex Grid */
+.monitor-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(30deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(150deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(30deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(150deg, #111 12%, transparent 12.5%, transparent 87%, #111 87.5%, #111),
+        linear-gradient(60deg, #1a1a2e 25%, transparent 25.5%, transparent 75%, #1a1a2e 75%, #1a1a2e),
+        linear-gradient(60deg, #1a1a2e 25%, transparent 25.5%, transparent 75%, #1a1a2e 75%, #1a1a2e);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Main Dashboard Grid */
+.monitor-container {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    background: rgba(10, 15, 20, 0.8);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+}
+
+.monitor-header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--neon-cyan);
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+.monitor-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-cyan);
+    margin: 0;
+    text-shadow: 0 0 10px var(--neon-cyan);
+    letter-spacing: 2px;
+}
+
+.status-badge {
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    color: #0f0;
+    border: 1px solid #0f0;
+    padding: 2px 10px;
+    background: rgba(0, 255, 0, 0.1);
+    animation: blink 2s infinite;
+}
+
+/* Panels */
+.panel {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9em;
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+/* Matrix Panel (Right 2/3) */
+.panel-matrix {
+    grid-row: 2;
+    grid-column: 2 / 4;
+    display: grid;
+    /* Changed to 3x3 Grid */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* Prevent scrollbar on scale */
+}
+
+/* Sector Card */
+.sector-card {
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    cursor: pointer;
+    min-height: 100px;
+}
+
+.sector-card:hover {
+    border-color: rgba(0, 243, 255, 0.5);
+    background: rgba(0, 243, 255, 0.05);
+}
+
+/* Active "Pop-up" State */
+.sector-card.active {
+    z-index: 100;
+    transform: scale(1.15) translateZ(20px);
+    background: rgba(5, 5, 20, 0.95);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.4), inset 0 0 20px rgba(0, 243, 255, 0.1);
+}
+
+.sector-info h4 {
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    margin: 5px 0 0 0;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+}
+
+.sector-info p {
+    color: rgba(255, 255, 255, 0.6);
+    font-family: 'Rajdhani', sans-serif;
+    margin: 2px 0 0 0;
+    font-size: 0.7em;
+    display: none;
+    /* Hide description by default to save space */
+}
+
+.sector-card.active .sector-info p {
+    display: block;
+    /* Show on active */
+    animation: fadeIn 0.5s;
+}
+
+/* Neon Icon Container */
+.sector-icon-container {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 0 2px var(--neon-cyan));
+}
+
+/* SVG Styles */
+.neon-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+/* The path that will animate */
+.neon-path,
+.neon-path-circle {
+    fill: none;
+    stroke: rgba(0, 243, 255, 0.3);
+    /* Dim by default */
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.3s;
+}
+
+/* Active state for paths */
+.sector-card.active .neon-path,
+.sector-card.active .neon-path-circle {
+    stroke: var(--neon-cyan);
+    stroke-width: 3;
+    stroke-dasharray: 60 100;
+    /* Create a 'dash' to animate */
+    animation: neonRun 2s linear infinite;
+    filter: drop-shadow(0 0 5px var(--neon-cyan));
+}
+
+.sector-card:hover .neon-path {
+    stroke: rgba(0, 243, 255, 0.8);
+}
+
+@keyframes neonRun {
+    0% {
+        stroke-dashoffset: 160;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
