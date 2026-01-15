@@ -4,31 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDPS - ACCESS</title>
+    <title>EDPS - TIMELINE</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Base Styles -->
     <link rel="stylesheet" href="style/2ndindexstyle.css">
-    <link rel="stylesheet" href="style/2ndindexmain.css">
-    <link rel="stylesheet" href="style/2ndindexgamestyle.css">
-    <!-- ▼▼▼ カード1専用のCSSを追加 ▼▼▼ -->
-    <link rel="stylesheet" href="style/card1.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style/TerminalTextEffect.css">
-
-    <link rel="stylesheet" href="style/map-style.css">
-
+    <!-- Timeline Specific Styles -->
+    <link rel="stylesheet" href="style/timeline.css">
 </head>
 
 <body>
 
     <div class="background-container">
         <div class="bg-section visible" id="bg-section-1"></div>
-        <div class="bg-section" id="bg-section-2"></div>
-        <div class="bg-section" id="bg-section-3"></div>
-        <div class="bg-section" id="bg-section-4"></div>
+        <!-- Optional: Add log layer here if desired, or keep it clean -->
     </div>
 
     <div class="content-wrapper">
@@ -44,11 +41,12 @@
                 <li><a href="about.html">ABOUT</a></li>
                 <li><a href="hub.html">EDPSHUB</a></li>
                 <li><a href="access.html">ACCESS</a></li>
-                <li><a href="timeline.html">TIMELINE</a></li>
+                <li><a href="timeline.html" class="active">TIMELINE</a></li>
             </ul>
             <div class="sidebar-footer">
-                <a href="https://x.com/home" target="_blank" class="social-button">
-                    <svg class="social-logo" viewBox="0 0 24 24" aria-hidden="true">
+                <!-- X Link -->
+                <a href="https://x.com/home" target="_blank" class="x-button">
+                    <svg class="x-logo" viewBox="0 0 24 24" aria-hidden="true">
                         <g>
                             <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
@@ -56,7 +54,7 @@
                         </g>
                     </svg>
                 </a>
-                <!-- ▼▼▼ Instagramボタンを追加 ▼▼▼ -->
+                <!-- Instagram Link -->
                 <a href="https://www.instagram.com/oecu_edps/" target="_blank" class="social-button">
                     <svg class="social-logo" viewBox="0 0 24 24" aria-hidden="true">
                         <g>
@@ -69,32 +67,27 @@
             </div>
         </nav>
 
-        <section class="content-section header-section">
-            <h1>ACCESS</h1>
-        </section>
+        <section class="timeline-main">
+            <div class="timeline-header-block">
+                <h1 class="glitch-text" data-text="EDPS DATA STREAM">EDPS DATA STREAM</h1>
+                <div class="stream-status">
+                    <span class="status-dot"></span>
+                    <span class="status-text">LIVE CONNECTION ESTABLISHED</span>
+                </div>
+            </div>
 
-        <section class="content-section text-effect-section">
-            <div class='console-container'>
-                <span id='text'></span>
-                <div class='console-underscore' id='console'>&#95;</div>
+            <div class="timeline-container">
+                <div class="central-line"></div>
+                <div class="feed-wrapper" id="feed-wrapper">
+                    <!-- Posts will be injected here via JS -->
+                </div>
             </div>
         </section>
-        <!-- ▼▼▼ ここから ▼▼▼ -->
-        <section class="MAP-section">
-            <div class="MAP-container">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d333.444158272994!2d135.62602510840293!3d34.760002784918086!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60011f0067c88f15%3A0x260f527d97b37509!2zRURQU1_pm7vlrZDoqIjnrpfntYTnuZTnoJTnqbbkvJo!5e0!3m2!1sja!2sjp!4v1756847223716!5m2!1sja!2sjp"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </section>
-        <!-- ▲▲▲ここまで▲▲▲-->
     </div>
 
-    <script src="script/2ndindexscript.js" defer></script>
-    <script src="script/2ndindexmain.js" defer></script>
-    <script src="script/2ndindexgame.js" defer></script>
-    <script src="script/TerminalTextEffect.js" defer></script>
+    <!-- Scripts -->
+    <script src="script/2ndindexscript.js" defer></script> <!-- Sidebar -->
+    <script src="script/timeline.js" defer></script> <!-- Timeline Logic -->
 </body>
 
 </html>
